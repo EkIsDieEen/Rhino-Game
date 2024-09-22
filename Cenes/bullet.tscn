@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxc25pyasih7f"]
+
+[ext_resource type="Script" path="res://Cenes/bullet.gd" id="1_3inhw"]
+[ext_resource type="Texture2D" uid="uid://da3hgsvu2rvih" path="res://Assets/Bullet/Bullet.png.png" id="1_dqtc8"]
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_3inhw")
+
+[node name="Bullet_png" type="Sprite2D" parent="."]
+position = Vector2(1.19209e-06, 0)
+scale = Vector2(0.0624512, 0.070922)
+texture = ExtResource("1_dqtc8")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(-6.10352e-05, 0)
+scale = Vector2(0.0628415, 0.0744681)
+polygon = PackedVector2Array(175.5, -114, 266.5, -114, 266.5, -111, 268.4, -83, 422.5, -83, 422.5, -80, 424.4, -51, 547.5, -51, 547.5, -48, 549.4, -20, 640.5, -20, 640.5, 18, 639.5, 18, 549.5, 19, 549.5, 46.8, 546.3, 50, 424.5, 50, 424.5, 77.8, 421.3, 81, 268.5, 81, 268.5, 111, 175.5, 113, 175.5, 140.8, -581.5, 141, -581.5, 140, -582.4, 113, -610.3, 113, -613.5, 109.8, -613.5, 81, -640.5, 81, -640.5, -83, -613.5, -83, -613.5, -110.8, -610.3, -114, -582.5, -114, -582.5, -141, 175.5, -141)
