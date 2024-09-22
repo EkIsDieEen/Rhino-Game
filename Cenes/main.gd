@@ -42,7 +42,7 @@ func _ready():
 	new_Game()
 
 func new_Game():
-#reset variables
+#reset variables by making evryting 0 or false
 	#Starting varibles
 	score = 0
 	show_score()
@@ -50,12 +50,12 @@ func new_Game():
 	get_tree().paused = false
 	difficulty = 0
 	
- 	#delete all obstacles
+ 	#delete all obstacles by clearing it and makes it so thaT there anre no obstacles in the queue
 	for obs in obstacles:
 		obs.queue_free()
 	obstacles.clear()
 	
-#reset the nodes
+#reset the nodes by seting it to the start posision
 	$Rhino.position = RHINO_START_POS
 	$Rhino.velocity = Vector2i(0, 0)
 	$Camera2D.position = CAM_START_POS
@@ -68,9 +68,9 @@ func new_Game():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _process(delta):
-	if game_running:
+	if game_running: #makes the rhino go faster by using the curent speed + the score divided by the score modifier
 		speed = START_SPEED + score / SCORE_MODIFIER
-		if speed > MAX_SPEED:
+		if speed > MAX_SPEED: # limits the max speed to the max speed varible
 			speed = MAX_SPEED
 		adjust_difficlty()
 		
@@ -81,21 +81,21 @@ func _process(delta):
 		$Rhino.position.x += speed
 		$Camera2D.position.x += speed
 		
-		#update score
+		#updates score
 		score += speed
 		show_score()
 		
-		#update ground position
+		#updates ground position
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
 			$Ground.position.x += screen_size.x
 		
-		#remove obstacles that have gone off screen
+		#removes obstacles that have gone off screen
 		for obs in obstacles:
 			if obs.position.x < ($Camera2D.position.x - screen_size.x):
 				remove_obs(obs)
 				
-	else: #if "ui_accept" is pressed hide the start lable.
-		if Input.is_action_pressed("ui_accept"): 
+	else: #if "Jump" is pressed hide the start lable.
+		if Input.is_action_pressed("Jump"): 
 			game_running = true
 			$HUD.get_node("StartLabel").hide() 
 
@@ -120,13 +120,12 @@ func generate_obs():
 		if difficulty ==  MAX_DIFFICULTY:
 			if (randi() % 2 ) == 0:
 
-				#generate bullet obstacles
+				#generates the  bullet obstacles
 
 				obs = Bullet_Scene.instantiate()
 				var obs_x : int = screen_size.x + score + 100
 				var obs_y : int = Bullet_hights[randi() % Bullet_hights.size()]
 				add_obs(obs, obs_x, obs_y)
-
 func add_obs(obs ,x ,y):
 	obs.position = Vector2i(x, y)
 	obs.body_entered.connect(hit_obs)
