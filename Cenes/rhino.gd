@@ -11,10 +11,10 @@ func _physics_process(delta):
 			$AnimatedSprite2D.play("Idle") # Tells the code to play the idle animation
 		else:
 			$RunCol.disabled = false
-			if Input.is_action_pressed("ui_accept"): # ui_accept(space bar)
+			if Input.is_action_pressed("Jump"): # jump = spacebar, up key or w
 				velocity.y = JUMP_SPEED
 				$JumpSound.play()
-			elif Input.is_action_pressed("ui_down"): # ui_down(down arrow key) 
+			elif Input.is_action_pressed("Duck"): # duck = down key or s
 				$AnimatedSprite2D.play("Duck") # Tells the code to play the Duck animation
 				$RunCol.disabled = true
 			else:
