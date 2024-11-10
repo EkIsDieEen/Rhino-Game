@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const GRAVITY : int = 4200
-const JUMP_SPEED : int = -1600
+const JUMP_SPEED : int = -1600 (((I cahnged the jump speed so that the rhino jumps higher increasing the odds that the rhino will hit the bullet)))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
