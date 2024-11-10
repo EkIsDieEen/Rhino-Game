@@ -1,27 +1,27 @@
 extends Node
 
 #Preloads Obstacles
-var Bullet_Scene = preload('res://Cenes/bullet.tscn')
-var Trap_Scene = preload('res://Cenes/trap.tscn') 
-var Rock_Scene = preload('res://Cenes/rock.tscn')
-var obstacle_types := [Rock_Scene, Trap_Scene]
+var Bullet_Scene = preload('res://Cenes/bullet.tscn') (((I added a bullet)))
+var Trap_Scene = preload('res://Cenes/trap.tscn') (((I added a trap)))
+var Rock_Scene = preload('res://Cenes/rock.tscn') (((I added a Rock)))
+var obstacle_types := [Rock_Scene, Trap_Scene] 
 var obstacles : Array
-var Bullet_hights := [200,390]
- 
+var Bullet_hights := [200,390]  (((I added the bullet and it's spawn hights)))
+
 # Game variables
 #High score
 var high_score : int
 # Start Pos
-const RHINO_START_POS := Vector2i(350,485)
-const CAM_START_POS := Vector2i(576,324)
+const RHINO_START_POS := Vector2i(350,485) (((I cahnged the rhino start pos )))
+const CAM_START_POS := Vector2i(576,324) 
 # Score
 var score : int
-const SCORE_MODIFIER : int = 15
+const SCORE_MODIFIER : int = 15 (((I cahnged the score modifier to suits my game)))
 # Speed
 var speed : float
-const START_SPEED : float = 1.0 
-const MAX_SPEED : int = 6
-const SPEED_MODIFIER : int = 5000
+const START_SPEED : float = 1.0 (((I cahnged the start speed to suit my game)))
+const MAX_SPEED : int = 6   (((I cahnged the max speed to suit my game))
+const SPEED_MODIFIER : int = 5000 
 #Size
 var screen_size : Vector2i
 var ground_height : int
@@ -102,7 +102,7 @@ func _process(delta):
 
 func generate_obs():
 	#generates the ground obstacles
-	if obstacles.is_empty() or last_obs.position.x < score + randi_range(200, 500):
+	if obstacles.is_empty() or last_obs.position.x < score + randi_range(200, 500): (((I cahnged the positions where obsticales spawn to suit my game)))
 		var obs_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs
 		var max_obs = difficulty + 1 
@@ -111,7 +111,7 @@ func generate_obs():
 			var obs_height = obs.get_node("Sprite2D").texture.get_height()
 			var obs_scale = obs.get_node("Sprite2D").scale
 			var obs_x : int = screen_size.x + score + 100 + (i * 100)
-			var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 260) + 10
+			var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 260) + 10 (((I cahnged the positions where obsticales spawn to suit my game))
 			last_obs = obs
 			add_obs(obs, obs_x, obs_y)
 
